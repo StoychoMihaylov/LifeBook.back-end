@@ -1,0 +1,28 @@
+﻿@model Lifebook.Models.BindingModels.ArticleBm
+@{
+    ViewBag.Title = "Write Acticle";
+}
+<h2>Write your article...</h2>
+@using (Html.BeginForm("AddArticle", "Article", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger"})
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-4">
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control"})
+        </div>   
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TextContent, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-5">
+            @Html.TextAreaFor(m => m.TextContent, new { @class = "form-control", @rows = "20", @cols = "100" })
+        </div>     
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-4">
+            <input type="submit" value="submit" class="btn btn-success">
+        </div>
+    </div>    
+}
